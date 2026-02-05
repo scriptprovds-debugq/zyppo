@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import HeroBanner from "@/components/home/HeroBanner";
+import CategoryGrid from "@/components/home/CategoryGrid";
+import ProductGrid from "@/components/home/ProductGrid";
+import DealsSection from "@/components/home/DealsSection";
+import SocialProof from "@/components/home/SocialProof";
+import { featuredProducts, dealProducts } from "@/data/products";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main className="flex-1">
+        <HeroBanner />
+        <CategoryGrid />
+        <ProductGrid 
+          title="Mais vendidos" 
+          subtitle="Os produtos que todo mundo está comprando"
+          products={featuredProducts.slice(0, 5)}
+        />
+        <DealsSection products={dealProducts} />
+        <ProductGrid 
+          title="Novidades" 
+          subtitle="Acabaram de chegar na Zyppo"
+          products={featuredProducts.slice(5, 10)}
+        />
+        <SocialProof />
+      </main>
+
+      <Footer />
     </div>
   );
 };
